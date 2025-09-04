@@ -9,7 +9,7 @@ var builder = FunctionsApplication.CreateBuilder(args);
 builder.Services
     .AddApplicationInsightsTelemetryWorkerService()
     .ConfigureFunctionsApplicationInsights()
-    .AddMemoryCache();
+    .AddMemoryCache();        
 
 builder.Services.AddSingleton<IHolidayDataService, HolidayDataService>();
 

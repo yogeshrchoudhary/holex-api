@@ -21,7 +21,7 @@ internal class HolidayDataService(IMemoryCache memoryCache)
             return exampleItems;
         }
 
-        return memoryCache.Get<IEnumerable<HolidayItem>>("HolidayItems")!;
+        return memoryCache.Get<List<HolidayItem>>("HolidayItems")!;
     }
     
     private static IEnumerable<HolidayItem> GetExampleHolidayItems() => [
@@ -36,7 +36,7 @@ internal class HolidayDataService(IMemoryCache memoryCache)
             {
                 Id = 2,
                 Name = "Cotswolds",
-                Description = "Lovely vilages of Bourton-on-the-Water, Cotswolds and Moreton-in-Marsh Market Town",
+                Description = "Lovely villages of Bourton-on-the-Water, Cotswolds and Moreton-in-Marsh Market Town",
                 Date = new DateTime(2025, 3, 10)
             }];
 }
