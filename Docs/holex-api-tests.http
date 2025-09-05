@@ -1,0 +1,16 @@
+@routeUrl=http://localhost:7071/api/v1
+
+### Test Get Products Function
+GET {{routeUrl}}/holiday-items
+Content-Type: application/json
+
+### Test Create Product
+POST {{routeUrl}}/holiday-items
+Content-Type: application/json
+
+{
+    "Name": "Test holiday",
+    "Date": "2025-10-23T00:00:00",
+    "Description": "This is a test holiday"
+}
+

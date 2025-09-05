@@ -5,6 +5,7 @@ namespace holex_api.Services;
 
 public interface IHolidayDataService
 {
+    void AddHolidayItem(HolidayItem holidayItem);
     IEnumerable<HolidayItem> GetHolidayItems();
 }
 
@@ -39,4 +40,13 @@ internal class HolidayDataService(IMemoryCache memoryCache)
                 Description = "Lovely villages of Bourton-on-the-Water, Cotswolds and Moreton-in-Marsh Market Town",
                 Date = new DateTime(2025, 3, 10)
             }];
+
+    public void AddHolidayItem(HolidayItem holidayItem)
+    {
+        var currentItems = GetHolidayItems().ToList();
+        var newId = currentItems.Any() ? currentItems.Max(item => item.Id) + 1 : 1;
+        holidayItem.Id = newId;
+        currentItems.Add(holidayItem);
+        memoryCache.Set("HolidayItems", currentItems);
+    }
 }
