@@ -9,8 +9,11 @@ POST {{routeUrl}}/holiday-items
 Content-Type: application/json
 
 {
-    "Name": "Test holiday",
-    "Date": "2025-10-23T00:00:00",
-    "Description": "This is a test holiday"
+    "Name": "Another test",
+    "Date": "2026-01-13T00:00:00",
+    "Description": "Another test holiday"
 }
 
+### Test Delete Product
+DELETE {{routeUrl}}/holiday-items/3
+Content-Type: application/json

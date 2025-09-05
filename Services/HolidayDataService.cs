@@ -6,6 +6,7 @@ namespace holex_api.Services;
 public interface IHolidayDataService
 {
     void AddHolidayItem(HolidayItem holidayItem);
+    void DeleteHolidayItem(int id);
     IEnumerable<HolidayItem> GetHolidayItems();
 }
 
@@ -48,5 +49,16 @@ internal class HolidayDataService(IMemoryCache memoryCache)
         holidayItem.Id = newId;
         currentItems.Add(holidayItem);
         memoryCache.Set("HolidayItems", currentItems);
+    }
+
+    public void DeleteHolidayItem(int id)
+    {
+        var currentItems = GetHolidayItems().ToList();
+        var itemToRemove = currentItems.FirstOrDefault(item => item.Id == id);
+        if (itemToRemove != null)
+        {
+            currentItems.Remove(itemToRemove);
+            memoryCache.Set("HolidayItems", currentItems);
+        }
     }
 }

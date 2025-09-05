@@ -28,4 +28,13 @@ public class holex_api(
         dataService.AddHolidayItem(holidayItem);
         logger.LogInformation("Added holiday item with ID {Id}.", holidayItem.Id);
     }
+
+    [Function("holex_api_delete")]
+    public void Delete([HttpTrigger(AuthorizationLevel.Function, "delete", Route = "v1/holiday-items/{id:int}")] HttpRequestData req,
+        int id)
+    {
+        logger.LogInformation("DELETE called for ID {Id}.", id);
+        dataService.DeleteHolidayItem(id);
+        logger.LogInformation("Deleted holiday item with ID {Id}.", id);
+    }
 }
